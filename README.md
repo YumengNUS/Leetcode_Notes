@@ -1,8 +1,20 @@
-## Welcome to GitHub Pages
+# Leetcode notes
 
-You can use the [editor on GitHub](https://github.com/YumengNUS/Yumeng.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+language: Python3
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+##Day1 (2021/Aug/09)
+
+20. Valid Parentheses （Easy）
+
+
+Algorithm：
+1.Create a empty stack
+2.Process every symbol from left to right
+3.If we encounter a right branket i.e. "\(\[\{"
+思路：括号匹配。生成空栈→从左到右从字符串里取括号→如是左括号，加入栈顶（stack.push(symbol)）→如是右括号，先判断栈空否→栈空则False；栈不空，移除栈顶的左括号 （top=stack.pop()）判断是否匹配，不匹配就False→当字符串取不到括号时，栈空则True，栈不空则False。
+
+
+
 
 ### Markdown
 
