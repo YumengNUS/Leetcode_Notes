@@ -4,7 +4,7 @@ language: Python3
 
 ### Q20. Valid Parentheses （Easy）
 
-Algorithm：Stack
+<strong>Algorithm:</strong> Stack
 
 1.Create an empty stack; 
 
@@ -26,6 +26,7 @@ Algorithm：Stack
 
 思路：括号匹配。生成空栈→从左到右从字符串里取括号→如是左括号，加入栈顶（stack.push(symbol)）→如是右括号，先判断栈空否→栈空则False；栈不空，移除栈顶的左括号 （top=stack.pop()）判断是否匹配，不匹配就False→当字符串取不到括号时，栈空则True，栈不空则False。
 
+<strong>Solution:</strong>
 ```python
 class Stack:
     def __init__(self):
@@ -58,8 +59,14 @@ class Solution:
         if stack.isEmpty() and balanced:
                return True
         else:
-               return False
-                  
-        
+               return False              
 ```
 
+<strong>Results:</strong>
+Success
+
+Details:
+
+Runtime: 32 ms, faster than 61.81% of Python3 online submissions for Valid Parentheses.
+
+Memory Usage: 14.4 MB, less than 7.77% of Python3 online submissions for Valid Parentheses.
