@@ -2,7 +2,7 @@
 
 language: Python3
 
-### 20. Valid Parentheses （Easy）
+### Q20. Valid Parentheses （Easy）
 
 Algorithm：Stack
 
@@ -12,15 +12,17 @@ Algorithm：Stack
 
 3.Process every symbol in the str from left to right; 
 
-4(1).If we encounter a left branket i.e. "\(\[\{", push it into the top of our stack; 
+4(if).If we encounter a left branket i.e. "\(\[\{", push it into the top of our stack; 
 
-4(2).Else if we encounter a right branket i.e. "\)\]\}", 
+4(else).Else if we encounter a right branket i.e. "\)\]\}", 
 
-    5(1).If the stack is Empty,False;
+&emsp;&emsp;5(if).If the stack is Empty, flag = False;
 
-    5(2).Else if the stack is Empty, remove the symbol in the stack top
+&emsp;&emsp;5(else).Else if the stack is not Empty, remove the symbol in the stack top;
 
+&emsp;&emsp;&emsp;&emsp;6.If this stack top doesn't matches the processing symbol,flag = False;
 
+7.After Processing all symbols in the str, if stack is not empty or flag == Flase, return False; else return True.
 
 思路：括号匹配。生成空栈→从左到右从字符串里取括号→如是左括号，加入栈顶（stack.push(symbol)）→如是右括号，先判断栈空否→栈空则False；栈不空，移除栈顶的左括号 （top=stack.pop()）判断是否匹配，不匹配就False→当字符串取不到括号时，栈空则True，栈不空则False。
 
