@@ -138,5 +138,11 @@ Runtime: 32 ms, faster than 52.32% of Python3 online submissions for Implement S
 
 Memory Usage: 14.5 MB, less than 11.54% of Python3 online submissions for Implement Stack using Queues.
 
+<strong>Other solution:</strong>One queue: push: O(n), pop: O(1)
+    
+When we push an element into a queue, it will be stored at back of the queue due to queue's properties. But we need to implement a stack, where last inserted element should be in the front of the queue, not at the back. To achieve this we can <strong>invert the order of queue elements</strong> when pushing a new element.
+
+![image](https://user-images.githubusercontent.com/49022041/128711466-e103f991-07f8-4f63-a605-66a9ac2b33c3.png)
+
 
 
