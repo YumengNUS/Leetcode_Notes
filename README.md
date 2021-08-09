@@ -4,13 +4,23 @@ language: Python3
 
 ### 20. Valid Parentheses （Easy）
 
-Algorithm：
-1.Create a empty stack; \n
-2.Create a dictionary of corresponding relation of different brankets; \n
-3.Process every symbol of str from left to right; \n
-4(1).If we encounter a left branket i.e. "\(\[\{", push it into the top of our stack; \n
+Algorithm：Stack
+
+1.Create an empty stack; 
+
+2.Create a dictionary of corresponding relation of different brankets; 
+
+3.Process every symbol in the str from left to right; 
+
+4(1).If we encounter a left branket i.e. "\(\[\{", push it into the top of our stack; 
+
 4(2).Else if we encounter a right branket i.e. "\)\]\}", 
-$\qquad$5(1)。
+
+    5(1).If the stack is Empty,False;
+
+    5(2).Else if the stack is Empty, remove the symbol in the stack top
+
+
 
 思路：括号匹配。生成空栈→从左到右从字符串里取括号→如是左括号，加入栈顶（stack.push(symbol)）→如是右括号，先判断栈空否→栈空则False；栈不空，移除栈顶的左括号 （top=stack.pop()）判断是否匹配，不匹配就False→当字符串取不到括号时，栈空则True，栈不空则False。
 
