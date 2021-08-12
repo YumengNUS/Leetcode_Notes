@@ -2,6 +2,8 @@
 
 language: Python3
 
+## 1.Stack
+
 ---
 ### Q20. Valid Parentheses （Easy）
 ---
@@ -144,5 +146,58 @@ When we push an element into a queue, it will be stored at back of the queue due
 
 ![image](https://user-images.githubusercontent.com/49022041/128711466-e103f991-07f8-4f63-a605-66a9ac2b33c3.png)
 
+---
+### Q155. Min Stack（Easy）
+---
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+<strong>Algorithm</strong>: Create a main stack to save data, and a aux list/stack to save the min elements in every position in that stack. Retrieving the minimum element to save runtime and memory usage.
+
+Notes: When building a stack with a specific task (Get Min), Overfitting to save runtime and memory usage is acceptable.
+
+思路：建立栈的同时建立另一个列表/栈去存储主栈中每一个位置对应的最小值。从而节省查找最小值的空间与时间。
 
 
+```python
+class MinStack:
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.elems = []
+        self.min_elem = []
+        
+    def push(self, val: int) -> None:
+        self.elems.append(val)
+        if len(self.min_elem) == 0:   
+            self.min_elem.append(val)
+        elif val < self.min_elem[len(self.min_elem)-1]:
+            self.min_elem.append(val)
+        else:
+            self.min_elem.append(self.min_elem[len(self.min_elem)-1])
+
+    def pop(self) -> None:
+        self.elems.pop()
+        self.min_elem.pop()
+
+    def top(self) -> int:
+        return self.elems[len(self.elems)-1]
+
+    def getMin(self) -> int:
+        return self.min_elem[len(self.min_elem)-1]
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+```
+<strong>Results:</strong>
+Success
+
+Details 
+
+Runtime: 60 ms, faster than 73.43% of Python3 online submissions for Min Stack.
+
+Memory Usage: 17.9 MB, less than 98.68% of Python3 online submissions for Min Stack.
