@@ -151,7 +151,7 @@ When we push an element into a queue, it will be stored at back of the queue due
 ---
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
-<strong>Algorithm</strong>: Create a main stack to save data, and a aux list/stack to save the min elements in every position in that stack. Retrieving the minimum element to save runtime and memory usage.
+<strong>Algorithm</strong>: Create a main stack to save data, and a aux list/stack to save the min elements in every position in that stack. Retrieving the minimum element during every push operation can save runtime and memory usage.
 
 Notes: When building a stack with a specific task (Get Min), Overfitting to save runtime and memory usage is acceptable.
 
