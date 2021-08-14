@@ -5,6 +5,117 @@ language: Python3
 ## 1.Stack
 
 ---
+### Q32. Longest Valid Parentheses  (Hard)
+---
+Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+
+<strong>Algorithm</strong>:
+Find the "()", and check if this "()" is concatenated with other "()". I use dictionary to record every "()"'s position and current length. 
+
+1. When find a valid "()", calculate the length of them. Then Check if this "()" concatenate with other valid "()", if yes, get the length of that "()" using dictionary and add it to current length.
+
+2. Store the position and total length of current "()" in th dictionary.
+
+3. if current length is longer than longest length, longest = current
+
+
+Notes: the length of parentheses = the position of ")" - the position of ")" + 1 
+    
+```python
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        longest_len = 0
+        cur_len = 0
+        stack = []
+        len_dic={}
+        position = []
+        for i in range (0, len(s)):
+            if s[i] == "(":
+                stack.append(i)                     
+            else:
+                if stack != []:
+                    if (stack[len(stack)-1] - 1) in position:
+                        cur_len = len_dic[stack[len(stack)-1] - 1] + i - stack[len(stack)-1] + 1
+                    else:
+                        cur_len = i - stack[len(stack)-1] + 1
+                    len_dic[i]=cur_len
+                    position.append(i)
+                    stack.pop()
+                    if cur_len > longest_len:
+                        longest_len = cur_len
+                else:
+                    cur_len = 0        
+        return longest_len
+        
+```
+    
+<strong>Results:</strong>
+Success
+    
+Runtime: 393 ms, faster than 5.45% of Python3 online submissions for Longest Valid Parentheses.
+    
+Memory Usage: 14.7 MB, less than 51.23% of Python3 online submissions for Longest Valid Parentheses.
+    
+---
+### Q921. Minimum Add to Make Parentheses Valid (Medium)
+---
+You are given a parentheses string s. In one move, you can insert a parenthesis at any position of the string. Return the minimum number of moves required to make s valid.
+
+
+
+```python
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        stack = 0
+        min_add = 0
+        for i in range (0,len(s)):
+            if s[i] == "(":
+                stack = stack+1
+            elif s[i] == ")" and stack != 0:
+                stack=stack-1
+            else:
+                min_add = min_add + 1
+        min_add+=stack
+        return min_add               
+```
+
+---
+### Q387. First Unique Character in a String  (Easy)
+---
+Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
+<strong>Algorithm:</strong>
+From the begining, checking repeating character after it one by one. If it's a repeating character, store it in a list (which is smaller than or equal to 26) so don't need to process this character again (saving runtime). Once non-repeating character is found, stop the loop.
+
+思路：本题通过的关键是少做无用功，节省运行时间。所以要斟酌条件判断，一旦条件达成便跳出循环，减少复杂度。
+
+```python
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        index = -1
+        repeat_list = []
+        flag = 0
+        for i in range (0, len(s)):            
+            if s[i] not in repeat_list:
+                flag = 0
+                for j in range (i+1, len(s)):
+                    if s[i] == s[j]:
+                        flag = 1
+                        repeat_list.append(s[j])
+                        break
+                if flag == 0:
+                    index = i
+                    break
+        return index                 
+```
+<strong>Results:</strong>
+Success 
+
+Runtime: 144 ms, faster than 38.77% of Python3 online submissions for First Unique Character in a String.
+
+Memory Usage: 14.5 MB, less than 21.54% of Python3 online submissions for First Unique Character in a String.
+
+---
 ### Q20. Valid Parentheses （Easy）
 ---
 <strong>Algorithm:</strong> Stack
@@ -196,73 +307,8 @@ Runtime: 60 ms, faster than 73.43% of Python3 online submissions for Min Stack.
 
 Memory Usage: 17.9 MB, less than 98.68% of Python3 online submissions for Min Stack.
 
----
-### Q921. Minimum Add to Make Parentheses Valid (Medi
----
-You are given a parentheses string s. In one move, you can insert a parenthesis at any position of the string. Return the minimum number of moves required to make s valid.
-
-```python
-class Solution:
-    def minAddToMakeValid(self, s: str) -> int:
-        stack = 0
-        min_add = 0
-        for i in range (0,len(s)):
-            if s[i] == "(":
-                stack = stack+1
-            elif s[i] == ")" and stack != 0:
-                stack=stack-1
-            else:
-                min_add = min_add + 1
-        min_add+=stack
-        return min_add           
-        
-```
 
 
 
 
----
-### Q32. Longest Valid Parentheses  (Hard)
----
-Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
 
-<strong>Algorithm<\strong>:
-Find the longest "()", and check if this "()" is concatenated  with other "()". I use dictionary to record every "()"'s position and current length. 
-
-Notes: the length of parentheses = the position of ")" - the position of ")" + 1 
-    
-```python
-class Solution:
-    def longestValidParentheses(self, s: str) -> int:
-        longest_len = 0
-        cur_len = 0
-        stack = []
-        len_dic={}
-        position = []
-        for i in range (0, len(s)):
-            if s[i] == "(":
-                stack.append(i)                     
-            else:
-                if stack != []:
-                    if (stack[len(stack)-1] - 1) in position:
-                        cur_len = len_dic[stack[len(stack)-1] - 1] + i - stack[len(stack)-1] + 1
-                    else:
-                        cur_len = i - stack[len(stack)-1] + 1
-                    len_dic[i]=cur_len
-                    position.append(i)
-                    stack.pop()
-                    if cur_len > longest_len:
-                        longest_len = cur_len
-                else:
-                    cur_len = 0        
-        return longest_len
-        
-```
-    
-<strong>Results:<\strong>
-Success
-    
-Runtime: 393 ms, faster than 5.45% of Python3 online submissions for Longest Valid Parentheses.
-    
-Memory Usage: 14.7 MB, less than 51.23% of Python3 online submissions for Longest Valid Parentheses.
-    
