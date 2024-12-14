@@ -307,7 +307,10 @@ Runtime: 60 ms, faster than 73.43% of Python3 online submissions for Min Stack.
 
 Memory Usage: 17.9 MB, less than 98.68% of Python3 online submissions for Min Stack.
 
-
+---
+### Q70. Climbing Stairs（Easy）
+---
+动态规划，用斐波那契数列解即可
 
 
 
